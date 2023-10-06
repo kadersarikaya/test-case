@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #003580;
+}
+
+.headerContainer  {
+    max-width: 1024px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1024px;
+    gap: 20px;
+}
+
+.search-form {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.input {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 400px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.button:hover {
+    background-color: #0069d9;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.article {
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+.select {
+    width: 300px;
+    /* veya istediğiniz genişlik */
+    height: 40px;
+    /* veya istediğiniz yükseklik */
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.searchItem {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputDate {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: none;
+    outline: #007bff;
+}
+
