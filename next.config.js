@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ['example.com'],
-  }
 }
 
 module.exports = {
-  // Diğer konfigürasyon ayarları...
+  images: {
+    domains: ['cdn2.enuygun.com'], // Resimlerin yüklenebileceği host adını burada belirtin
+  },
 };
 

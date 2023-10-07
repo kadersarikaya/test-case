@@ -1,0 +1,81 @@
+.payment {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.paymentContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 1024px;
+}
+.titlePayment {
+    display: flex;
+    color: #011e46;
+    align-items: center;
+}
+.titlePayment span {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+.form-group {
+    margin: 1rem 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #0069d9;
+}
+
+.passengerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+}
+.info {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.passenger {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.passenger span:nth-child(1) {
+    font-weight: 600;
+}
+.totalPrice span:nth-child(2) {
+    font-weight: 600;
+}

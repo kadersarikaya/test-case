@@ -1,0 +1,136 @@
+.modalBus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: #fff;
+    padding: 5px;
+}
+p{
+    color: #000;
+}
+
+.closeButton {
+    background-color: #e2e2e2;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    color: #000;
+    font-size: 20px;
+}
+
+.modalSymbols {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+.symbolSquare {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.symbol {
+    display: flex;
+}
+.manSelected {
+    background-color: #B6D8F5;
+}
+.womanSelected {
+    background-color: #F5B6CE;
+}
+.empty {
+    background-color: #e2e2e2;
+}
+.selected {
+    background-color: #A7E0C0;
+}
+.modalSeats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid #ccc;
+    height: 100%;
+    gap: 30px;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+.seatTop, .seatBtm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.seatRow {
+    display: flex;
+    justify-content: space-between;
+}
+.bus {
+    display: flex;
+     padding: 15px;
+     
+}
+
+.driver {
+    border: 1px solid #ccc;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    padding: 10px;
+}
+.busModalProcess {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    gap: 20px;
+}
+
+.restSeats {
+    display: flex;
+}
+.restSeats p {
+   width: 150px;
+}
+
+.seats {
+    display: flex;
+    justify-content: space-between;
+
+}
+.priceBusModal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}

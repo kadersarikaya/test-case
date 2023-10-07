@@ -2,4 +2,74 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 100px;
+}
+
+.ticketListContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.listItem {
+    display: flex;
+    justify-content: space-arpund;
+    align-items: center;
+    width: 100%;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+     gap: 30px;
+    border: 1px solid #ccc;
+
+}
+.title {
+    width: 100%;
+    height: 40px;
+    background-color:#003580;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.Item {
+    padding: 5px;
+    display: flex; 
+    justify-content: center;
+    gap: 5px;
+}
+
+ .price {
+    font-size: 20px;
+    font-weight: bold;
+ }
+ .priceKüs {
+    font-size: 12px;
+    font-weight: 600;
+ }
+
+
+ .chooseTicketBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    justify-content: center;
+ }
+
+  .chooseTicketBtn:hover {
+    background-color: #0069d9;
+}
+
+.column {
+    flex-direction: column;
 }
