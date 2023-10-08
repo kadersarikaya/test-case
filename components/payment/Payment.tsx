@@ -1,7 +1,51 @@
-import React from "react";
+"use client"
+import React, {useState} from "react";
 import "./Payment.css";
+import Spinner from "../spinner/Spinner";
+import { useRouter } from "next/navigation";
 
-const Payment = () => {
+const Payment: React.FC = () => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
+  const [cardNumber, setCardNumber] = useState(''); // Kredi kartı numarası
+  const [expirationDate, setExpirationDate] = useState(''); // Son kullanma tarihi
+  const [cvv, setCvv] = useState(''); // CVV numarası
+  const handlePaymentSubmit: any = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!cardNumber || !expirationDate || !cvv) {
+      alert("Lütfen tüm alanları doldurunuz!");
+      setIsPaymentSuccessful(false);
+      return; // Eğer gerekli alanlar eksikse fonksiyondan çık
+    }
+
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsPaymentSuccessful(true);
+    }, 1000);
+  };
+
+  if (isPaymentSuccessful) {
+    return (
+      <div className="successMsg">
+        <div className="tick">
+          ✅
+        </div>
+        <p>Ödeme Başarılı!</p>
+        <button onClick={() => router.push("/home")}>Ana Sayfaya Dön</button>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <Spinner />
+    );
+  }
+
+  
   return (
     <div className="payment" >
       <div className="paymentContainer">
@@ -12,22 +56,33 @@ const Payment = () => {
           </div>
           <div className="form-group">
             <label htmlFor="card-number">Kart Numarası</label>
-            <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required/>
+            <input 
+             type="text" id="card-number"
+             value={cardNumber}
+              onChange={(e) => setCardNumber(e.target.value)}
+             name="card-number" placeholder="1234 5678 9012 3456" required/>
           </div>
           <div className="form-group">
             <label htmlFor="expiration-date">Son Kullanma Tarihi</label>
-            <input type="text" id="expiration-date" name="expiration-date" placeholder="MM / YY" required/>
+            <input 
+            value={expirationDate}
+            onChange={(e) => setExpirationDate(e.target.value)}
+            type="text" id="expiration-date" name="expiration-date"
+             placeholder="MM / YY" required/>
           </div>
           <div className="form-group">
             <label htmlFor="cvv">CVV</label>
-            <input type="text" id="cvv" name="cvv" placeholder="123" required/>
+            <input 
+            value={cvv}
+            onChange={(e) => setCvv(e.target.value)}
+            type="text" id="cvv" name="cvv" placeholder="123" required/>
           </div>
           <div className="submit">
             <div className="totalPrice">
               <span>Toplam Tutar: </span>
               <span> 750 TL</span>
             </div>
-            <button type="submit">Ödeme Yap</button>
+            <button onClick={handlePaymentSubmit} type="submit">Ödeme Yap</button>
           </div>
         </form>
         <div className="passengerInfo">
@@ -62,20 +117,6 @@ const Payment = () => {
               <div className="name">
                 <span>1.Yetişkin: </span>
                 <span> Ali Veli</span>
-              </div>
-              <div className="seat">
-                <span>Koltuk No: </span>
-                <span> 12</span>
-              </div>
-            </div>
-            <div className="passenger">
-              <div className="name">
-                <span>1.Yetişkin: </span>
-                <span> Ali Veli</span>
-              </div>
-              <div className="seat">
-                <span>Koltuk No: </span>
-                <span> 12</span>
               </div>
             </div>
           </div>

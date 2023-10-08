@@ -1,15 +1,43 @@
-import React from "react";
+"use client"
+import React, {useState} from "react";
 import "./BusModal.css";
-import { AiOutlineClose, AiOutlineArrowRight } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineArrowRight, AiOutlineWoman, AiOutlineMan } from "react-icons/ai";
 import { GiSteeringWheel } from "react-icons/gi";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTravelContext } from "@/context/TravelContext";
+import Link from "next/link";
 
 interface BusModalProps {
     setShowBus: React.Dispatch<React.SetStateAction<boolean>>;
     showBus: boolean;
+    price: number;
 }
 
-const BusModal: React.FC<BusModalProps> = ({setShowBus, showBus}) => {
+const BusModal: React.FC<BusModalProps> = ({price, setShowBus, showBus}) => {
+  const [selectedGender, setSelectedGender] = useState(''); // Seçili cinsiyet bilgisi
+  const [selectedSeats, setSelectedSeats] = useState<number[]>([]); // Seçili koltuk numaraları
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedSeatNumber, setSelectedSeatNumber] = useState<number | null>(null); // Seçili koltuk numarası
+
+  const handleSeatClick = (seatNumber: number) => {
+    if(selectedSeats.length === 5) return; // Eğer seçili koltuk sayısı 5 ise fonksiyondan çık
+    if (selectedSeats.includes(seatNumber)) {
+      setSelectedSeats(selectedSeats.filter((num) => num !== seatNumber));
+      setSelectedSeatNumber(null);
+    } else {
+      // Koltuk seçili değilse seçimi yap
+      setSelectedSeats([...selectedSeats, seatNumber]);
+      setSelectedSeatNumber(seatNumber);
+      setIsModalVisible(true);
+    }
+  };
+
+  const calculateSeatNumber = (rowIndex: number, seatIndex:number) => {
+    const totalColumns = 8; // Her sırada toplam 8 koltuk var
+    const seatNumber = rowIndex * totalColumns + (7 - seatIndex) + 1;
+    return seatNumber;
+  };
+
   return (
     <AnimatePresence>
       {showBus && (
@@ -48,48 +76,56 @@ const BusModal: React.FC<BusModalProps> = ({setShowBus, showBus}) => {
               <div className="bus">
                 <div className="modalSeats">
                   <div className="seatTop">
-                    <div className="seatRow">
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                    </div>
-                    <div className="seatRow">
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat selected"></div>
-                      <div className="seat"></div>
-                      <div className="seat selected"></div>
-                      <div className="seat"></div>
-                    </div>
+                    {Array.from({ length: 2 }, (_, rowIndex) => (
+                      <div className="seatRow" key={rowIndex}>
+                        {Array.from({ length: 8 }, (_, seatIndex) => {
+                          const seatNumber = calculateSeatNumber(rowIndex, seatIndex);
+                          const isSelected = selectedSeats.includes(seatNumber); // selectedSeats, seçili koltuk numaralarını içeren bir dizi olsun
+                          return (
+                            <div className="btnComp">
+                              {isModalVisible && selectedSeatNumber === seatNumber && (
+                              <div className="genderModal">
+                                <button className="womanBtn">
+                                  <AiOutlineWoman/>
+                                  <span>Kadın</span>
+                                </button>
+                                <button className="manBtn" >
+                                  <AiOutlineMan/>
+                                  <span>Erkek</span>
+                                </button>
+                              </div>
+                              )}
+                              <button
+                                key={seatIndex}
+                                className={`seat  ${isSelected ? 'selected' : ''}`}
+                                onClick={() => handleSeatClick(seatNumber)}
+                              >
+                                {seatNumber}
+                              </button>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ))}
                   </div>
                   <div className="seatBtm">
-                    <div className="seatRow">
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                    </div>
-                    <div className="seatRow">
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat"></div>
-                      <div className="seat selected"></div>
-                      <div className="seat"></div>
-                      <div className="seat selected"></div>
-                      <div className="seat"></div>
-                    </div>
+                    {Array.from({ length: 2 }, (_, rowIndex) => (
+                      <div className="seatRow" key={rowIndex}>
+                        {Array.from({ length: 8 }, (_, seatIndex) => {
+                          const seatNumber = calculateSeatNumber(rowIndex + 4, seatIndex);
+                          const isSelected = selectedSeats.includes(seatNumber);
+                          return (
+                            <button
+                              key={seatIndex}
+                              className={`seat ${isSelected ? 'selected' : ''}`}
+                              onClick={() => handleSeatClick(seatNumber)}
+                            >
+                              {seatNumber}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div className="driver">
@@ -107,23 +143,29 @@ const BusModal: React.FC<BusModalProps> = ({setShowBus, showBus}) => {
           <div className="busModalProcess">
             <div className="restSeats">
               <p>En fazla 5 koltuk seçebilirsiniz</p>
-              <div className="seats">
-                <div className="seat"></div>
-                <div className="seat"></div>
-                <div className="seat"></div>
-                <div className="seat"></div>
-                <div className="seat"></div>
+              <div className="seats" >
+                {selectedSeats.map((seatNumber) => (
+                  <div className="seat" key={seatNumber}>
+                     {seatNumber}
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="priceBusModal">
-              Toplam Tutar:
-              <p className="price">698</p>
-              <span className="priceKüs" >.00TL</span>
-            </div>
             <div className="continue">
-              <button className="chooseTicketBtn">Onayla ve Devam Et
-              <AiOutlineArrowRight />
-              </button>
+              <div className="priceBusModal">
+                Toplam Tutar:
+                <p className="price">
+                  {selectedSeats.length * price}
+                </p>
+                <span className="priceKüs" >.00TL</span>
+              </div>
+              <>
+                <Link href="/payment">
+                  <button className="chooseTicketBtn">Onayla ve Devam Et
+                    <AiOutlineArrowRight />
+                  </button>
+                </Link>
+              </>
             </div>
           </div>
         </motion.div>

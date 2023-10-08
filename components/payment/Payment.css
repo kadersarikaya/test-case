@@ -13,7 +13,7 @@
     width: 100%;
     max-width: 1024px;
 }
-.titlePayment {
+.paymentContainer .titlePayment {
     display: flex;
     color: #011e46;
     align-items: center;
@@ -27,12 +27,12 @@
     margin: 1rem 0;
 }
 
-label {
+.form-group label {
     display: block;
     margin-bottom: 0.5rem;
 }
 
-input[type="text"] {
+.form-group input[type="text"] {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -40,7 +40,7 @@ input[type="text"] {
     font-size: 1rem;
 }
 
-button[type="submit"] {
+.paymentContainer [type="submit"] {
     background-color: #007bff;
     color: #fff;
     padding: 0.5rem 1rem;
@@ -78,4 +78,49 @@ button[type="submit"]:hover {
 }
 .totalPrice span:nth-child(2) {
     font-weight: 600;
+}
+
+.passenger .seat {
+    display: flex;
+}
+
+.submit button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+.successMsg {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+}
+.tick {
+    font-size: 100px;
+}
+.successMsg button {
+    background-color: rgb(3, 58, 3);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+@media  screen and (max-width: 768px){
+    .paymentContainer {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    
 }

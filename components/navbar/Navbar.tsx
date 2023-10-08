@@ -1,13 +1,21 @@
+"use client"
+import Link from "next/link";
 import "./navbar.css"
+import { useAuth } from "@/context/AuthContext"
 
 const Navbar = () => {
+    const { currentUser, logout } = useAuth();
     return (
         <div className="navbar">
             <div className="navContainer">
-                <span className="logo">busbooking</span>
+                <Link href="/home">
+                    <span className="logo">busbooking</span>
+                </Link>
                 <div className="navItems">
-                    <button className="navButton">Üye Ol</button>
-                    <button className="navButton">Giriş Yap</button>
+                    <button onClick={() => logout()}
+                     className="navButton">
+                        Çıkış Yap
+                    </button>
                 </div>
             </div>
         </div>

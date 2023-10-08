@@ -9,7 +9,6 @@
 .registerForm {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     width: 400px;
     height: 400px;
@@ -18,8 +17,8 @@
     padding: 20px;
 }
 
-input,
-select {
+.register input,
+.register select {
     width: 100%;
     height: 50px;
     margin-bottom: 10px;
@@ -53,4 +52,24 @@ select {
     font-weight: 700;
     margin-bottom: 20px;
     color: #003580;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.registerBtn:disabled {
+    background-color: #ccc;
+    /* Devre dışı rengi */
+    color: #666;
+    /* Yazı rengi */
+    cursor: not-allowed;
+    /* Fare işareti: el değil */
+}
+
+.inputError {
+   color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
 }

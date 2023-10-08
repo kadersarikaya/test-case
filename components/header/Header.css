@@ -13,6 +13,7 @@
     justify-content: space-between;
     max-width: 1024px;
     gap: 20px;
+    
 }
 
 .search-form {
@@ -25,14 +26,14 @@
     gap: 10px;
 }
 
-.input {
+.search-form .input {
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
     width: 400px;
 }
 
-.button {
+.searchButton {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #007bff;
@@ -49,7 +50,7 @@
 }
 
 
-.button:hover {
+.searchButton:hover {
     background-color: #0069d9;
     margin-left: 10px;
     margin-right: 10px;
@@ -87,6 +88,55 @@
     margin-bottom: 10px;
     background-color: #fff;
     border: none;
-    outline: #007bff;
 }
 
+.inputError {
+    font-size: 14px;
+    color: red;
+    margin-bottom: 10px;
+}
+
+select {
+    border: none;
+    outline: none;
+    padding: 5px;
+    background-color: #fff !important;
+    font-size: 16px;
+}
+
+.searchButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.article .subtitle {
+    color: #fff;
+}
+
+.article .title {
+    color: #fff !important;
+}
+
+@media screen and (max-width: 768px) {
+    .headerContainer {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .search-form {
+        width: 100%;
+    }
+    .search-form .input {
+        width: 100%;
+    }
+    .searchItem {
+        width: 100%;
+    }
+    .select {
+        width: 100%;
+    }
+    .inputDate {
+        width: 100%;
+    }
+    .searchButton {
+        width: 100%;
+    }
+}
