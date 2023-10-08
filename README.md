@@ -29,22 +29,20 @@ Seferler, [bu endpoint](https://kadersarikaya.github.io/Data/seferler.json) üze
 
 Projeyi çalıştırmak için [Node.js](https://nodejs.org/) yüklü olmalıdır. Ardından şu adımları izleyebilirsiniz:
 
-1. Bu depoyu klonlayın:
 
-   ```bash
+```
    git clone [<repo-url>](https://github.com/kadersarikaya/test-case.git)https://github.com/kadersarikaya/test-case.git)
-
-2. Proje dizinine gidin:
-  ```
-  cd your-project-directory
 ```
 
-3. Gerekli bağımlılıkları yükleyin:
-   ```
-  npm install
-  ``` 
+```
+  cd test-case
+```
 
-4. Projeyi başlatın:
+```
+  npm install
+ ``` 
+
+
 ```
  npm run dev
 ```
